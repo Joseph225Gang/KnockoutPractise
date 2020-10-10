@@ -1,0 +1,53 @@
+<!-- 
+   This is the code from Part 1 of my video tutorials on learning Knockout JS:
+   https://www.youtube.com/watch?v=XhfPaNTEuTs
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+   <title>knockout.js First Lab</title>
+   <link rel=stylesheet type="text/css" href="index.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js"></script>
+</head>
+<body>
+<div id="knockout-app" class="card">
+    <div class="card-section">
+       <h2>Hello, <span data-bind="text: userName"></span></h2>
+       <p>How many walks will I take today?</p>
+       <div class="counter-ui-container">
+          <button data-bind="click: minus">-</button>
+          <span class="counter" data-bind="text: count">0</span>
+          <button data-bind="click: add">+</button>
+       </div>
+       <p>
+          Your status is <span data-bind="text: status"></span>
+       </p>
+    </div>
+    <div>
+      <h2>Toy Inventory</h2>
+      <p data-bind="visible: inventory().length === 0">You don't have any toys yet!</p>
+      <p data-bind="visible: inventory().length > 0">These are the assets we have to work with.</p>
+    <ul data-bind="foreach: inventory" style="text-align:center">
+      <li>
+         <span>
+            <span data-bind="class: $data.icon"></span>
+            <span class="li_label" data-bind="text: $data.text"></span>
+         </span>
+         <button class="button_small" data-bind="click: $parent.removeItem, attr: {'item-index': $index}">
+            &times;
+         </button>
+      </li>
+   </ul>
+    </div>
+    <form data-bind="submit: handleSubmit">
+      <div class="field">
+         <label for="email">Email Address*</label>
+         <input data-bind="value: emailAddress" placeholder="you@mail.com" id="email" type="text" />
+      </div>
+      <input type="submit" value="Continue">
+   </form>
+ </div>
+   <script src="knout.js"></script>
+ </body>
+</html>
